@@ -90,3 +90,31 @@ function animate() {
 
 animate();
 ```
+
+
+```js
+
+// Pintado:
+function animate() {
+    requestAnimationFrame(animate);
+    renderer.render(scene, camera);
+    
+    raycaster.setFromCamera(mouse, camera);
+    const intersects = raycaster.intersectObject(planeMesh);
+    if (intersects.length > 0) {
+        const { color } = intersects[0].object.geometry.attributes;
+        color.setX(intersects[0].face.a, 0);
+        color.setY(intersects[0].face.a, 0);
+        color.setZ(intersects[0].face.a, 0);
+        color.needsUpdate = true;
+        color.setX(intersects[0].face.b, 0);
+        color.setY(intersects[0].face.b, 0);
+        color.setZ(intersects[0].face.b, 0);
+        color.needsUpdate = true;
+        color.setX(intersects[0].face.c, 0);
+        color.setY(intersects[0].face.c, 0);
+        color.setZ(intersects[0].face.c, 0);
+        color.needsUpdate = true;
+    }
+}
+```

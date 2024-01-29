@@ -2,6 +2,11 @@
   box-sizing: border-box;
 }
 
-body {
+body, html {
   margin: 0;
+  padding: 0;
+  overflow: hidden; /* Esto evita las barras de desplazamiento */
+}
+canvas {
+  display: block; /* Esto puede ayudar a eliminar cualquier espacio extra */
 }
