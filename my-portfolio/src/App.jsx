@@ -8,7 +8,8 @@ function App() {
     <>
       <div className="miniapp absolute text-white text-center">
                 <h1 className="text-3xl">Alex Basurto</h1>
-                <p className="text-3xl">Full Stack Web Developer</p>
+                <p className="fs-web-dev text-3xl">Full Stack</p>
+                <p className="fs-web-dev text-3xl">Web Developer</p>
                 <a href="https://github.com/alexBasurto"
                     target="_blank"
                     rel="noopener noreferrer"
