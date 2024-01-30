@@ -6,7 +6,28 @@ body, html {
   margin: 0;
   padding: 0;
   overflow: hidden; /* Esto evita las barras de desplazamiento */
+  font-family: 'Syncopate', sans-serif;
+  font-weight: 400;
+  --webkit-font-smoothing: antialiased;
 }
+
 canvas {
   display: block; /* Esto puede ayudar a eliminar cualquier espacio extra */
+}
+
+.absolute {
+  position: absolute;
+}
+
+.miniapp {
+  top: 50%;
+  transform: translate(-50%, -50%);
+  left: 50%;
+}
+
+h1 {
+  font-size: 3rem;
+  font-weight: 700 !important;
+  margin: 0;
+  padding: 0;
 }
