@@ -21,6 +21,12 @@ gui.add(world.plane, "widthSegments", 1, 100).onChange(generatePlane);
 
 gui.add(world.plane, "heightSegments", 1, 100).onChange(generatePlane);
 
+const blueColor = {
+    r: 0.059,
+    g: 0.059,
+    b: 0.196,
+};
+
 function generatePlane() {
     planeMesh.geometry.dispose();
     planeMesh.geometry = new THREE.PlaneGeometry(
@@ -55,7 +61,7 @@ function generatePlane() {
 
     const colors = [];
     for (let i = 0; i < planeMesh.geometry.attributes.position.count; i++) {
-        colors.push(0, 0.19, 0.4);
+        colors.push(blueColor.r, blueColor.g, blueColor.b);
     }
 
     planeMesh.geometry.setAttribute(
@@ -175,14 +181,14 @@ function animate() {
         color.needsUpdate = true;
 
         const initialColor = {
-            r: 0,
-            g: 0.19,
-            b: 0.4,
+            r: blueColor.r,
+            g: blueColor.g,
+            b: blueColor.b,
         };
 
         const hoverColor = {
-            r: 0.1,
-            g: 0.5,
+            r: 0.2,
+            g: 0.2,
             b: 1,
         };
 
@@ -234,6 +240,9 @@ const viewWorkCameraMove = () => {
         duration: 1.5,
         ease: "power3.in",
         delay: 1.5,
+        onComplete: () => {
+            window.location = 'https://github.com/alexBasurto';
+        },
     });
 };
 
