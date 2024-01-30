@@ -36,3 +36,9 @@ canvas {
 #alex-basurto, #full-stack, #web-developer, #view-work {
   transform: translateY(30px);
 }
+
+@media (max-width: 768px) {
+  .fs-web-dev {
+    font-size: 1.6rem;
+  }
+}

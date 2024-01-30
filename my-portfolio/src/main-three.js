@@ -53,8 +53,6 @@ function generatePlane() {
     planeMesh.geometry.attributes.position.originalPosition =
         planeMesh.geometry.attributes.position.array;
 
-
-
     const colors = [];
     for (let i = 0; i < planeMesh.geometry.attributes.position.count; i++) {
         colors.push(0, 0.19, 0.4);
@@ -106,7 +104,6 @@ const planeMesh = new THREE.Mesh(planeGeometry, planeMaterial);
 scene.add(planeMesh);
 
 generatePlane();
-
 
 const light = new THREE.DirectionalLight(0xffffff, 1);
 light.position.set(0, 1, 1);
@@ -221,5 +218,29 @@ addEventListener("mousemove", (event) => {
     mouse.y = -(event.clientY / innerHeight) * 2 + 1;
 });
 
+const viewWorkCameraMove = () => {
+    gsap.to(camera.position, {
+        z: 25,
+        duration: 1.5,
+        ease: "power3.inOut",
+    });
+    gsap.to(camera.rotation, {
+        x: 1.57,
+        duration: 2,
+        ease: "power3.inOut",
+    });
+    gsap.to(camera.position, {
+        y: 1000,
+        duration: 1.5,
+        ease: "power3.in",
+        delay: 1.5,
+    });
+};
 
+const handleResize = () => {
+    camera.aspect = window.innerWidth / window.innerHeight;
+    camera.updateProjectionMatrix();
+    renderer.setSize(window.innerWidth, window.innerHeight);
+};
 
+export { viewWorkCameraMove, handleResize };
