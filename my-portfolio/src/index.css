@@ -9,6 +9,7 @@ body, html {
   font-family: 'Syncopate', sans-serif;
   font-weight: 400;
   --webkit-font-smoothing: antialiased;
+  background-color: black;
 }
 
 canvas {
@@ -30,4 +31,8 @@ canvas {
   font-weight: 700 !important;
   margin: 0;
   padding: 0;
+}
+
+#alex-basurto, #full-stack, #web-developer, #view-work {
+  transform: translateY(30px);
 }
