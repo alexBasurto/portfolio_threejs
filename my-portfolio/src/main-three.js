@@ -241,7 +241,8 @@ const viewWorkCameraMove = () => {
         ease: "power3.in",
         delay: 1.5,
         onComplete: () => {
-            window.location = 'https://github.com/alexBasurto';
+            this.$router.push("/work");
+
         },
     });
 };
