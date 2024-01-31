@@ -1,8 +1,9 @@
 import { useEffect } from "react";
-import { setup3DEnvironment, handleResize, clickViewWork, welcomeAnimation } from "./main-three.js";
-import "./App.css";
+import { useNavigate } from "react-router-dom";
+import { setup3DEnvironment, handleResize, clickViewWork, welcomeAnimation, stopThreeEnvironment } from "./App-three.js";
 
 function App() {
+    const navigate = useNavigate();
 
     useEffect(() => {
         setup3DEnvironment();
@@ -16,6 +17,13 @@ function App() {
       // Limpiar (remover) el event listener cuando el componente se desmonte
       return () => window.removeEventListener('resize', handleResize);
     }, []);
+
+    const handleViewWork = async () => {
+        await clickViewWork().then(() => {
+            stopThreeEnvironment();
+            navigate("/work");
+        });
+    }
   
 
     return (
@@ -32,7 +40,7 @@ function App() {
                 </p>
                 <button
                     id="view-work"
-                    onClick= { (e) => clickViewWork(e) }
+                    onClick={handleViewWork}
                     className="text-2xl mt-4 border px-4 py-2 rounded-lg hover:bg-white hover:text-gray-800 inline-block opacity-0"
                 >
                     View Work

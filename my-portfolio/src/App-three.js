@@ -52,7 +52,7 @@ const planeMesh = new THREE.Mesh(planeGeometry, planeMaterial);
 scene.add(planeMesh);
 
 // blue colors
-const blueColor = {r: 0.059, g: 0.059, b: 0.196,};
+const blueColor = { r: 0.059, g: 0.059, b: 0.196 };
 
 // Frame counter
 let frame = 0;
@@ -142,15 +142,17 @@ const generatePlane = () => {
         "color",
         new THREE.BufferAttribute(new Float32Array(colors), 3)
     );
-}
+};
 
 gui.add(world.plane, "width", 1, 500).onChange(generatePlane);
 gui.add(world.plane, "height", 1, 500).onChange(generatePlane);
 gui.add(world.plane, "widthSegments", 1, 100).onChange(generatePlane);
 gui.add(world.plane, "heightSegments", 1, 100).onChange(generatePlane);
 
+let animationFrameId;
+
 const animate = () => {
-    requestAnimationFrame(animate);
+    animationFrameId = requestAnimationFrame(animate);
     renderer.render(scene, camera);
 
     raycaster.setFromCamera(mouse, camera);
@@ -216,36 +218,14 @@ const animate = () => {
         });
     }
     stars.rotation.y += 0.002;
-}
+};
 
 const setup3DEnvironment = () => {
     generatePlane();
     animate();
-}
-
-// Fn aparte
-const viewWorkCameraMove = () => {
-    gsap.to(camera.position, {
-        z: 25,
-        duration: 1.5,
-        ease: "power3.inOut",
-    });
-    gsap.to(camera.rotation, {
-        x: 1.57,
-        duration: 2,
-        ease: "power3.inOut",
-    });
-    gsap.to(camera.position, {
-        y: 1000,
-        duration: 1.5,
-        ease: "power3.in",
-        delay: 1.5,
-        onComplete: () => {
-            this.$router.push("/work");
-        },
-    });
 };
 
+// Fn aparte
 const handleResize = () => {
     camera.aspect = window.innerWidth / window.innerHeight;
     camera.updateProjectionMatrix();
@@ -292,15 +272,74 @@ const welcomeAnimation = () => {
     });
 };
 
-const clickViewWork = (e) => {
-    // todo
-    e.preventDefault();
-    gsap.to(".miniapp", {
-        opacity: 0,
-        duration: 1,
-        ease: "power4.out",
+const clickViewWork = () => {
+    return new Promise((resolve) => {
+        gsap.to(".miniapp", {
+            opacity: 0,
+            duration: 1,
+            ease: "power4.out",
+        });
+        gsap.to(camera.position, {
+            z: 25,
+            duration: 1.5,
+            ease: "power3.inOut",
+        });
+        gsap.to(camera.rotation, {
+            x: 1.57,
+            duration: 2,
+            ease: "power3.inOut",
+        });
+        gsap.to(camera.position, {
+            y: 1000,
+            duration: 1.5,
+            ease: "power3.in",
+            delay: 1.5,
+            onComplete: () => {
+                resolve(); // navigate to /work
+            },
+        });
     });
-    viewWorkCameraMove();
 };
 
-export { setup3DEnvironment, handleResize, welcomeAnimation, clickViewWork };
+
+const stopThreeEnvironment = () => {
+    // Detener el bucle de animación
+    cancelAnimationFrame(animationFrameId);
+
+    // Limpiar la escena
+    scene.children.forEach(object => {
+        if (object.geometry && typeof object.geometry.dispose === 'function') {
+            object.geometry.dispose();
+        }
+
+        if (object.material) {
+            if (Array.isArray(object.material)) {
+                // En caso de que el objeto tenga varios materiales
+                object.material.forEach(material => {
+                    if (typeof material.dispose === 'function') {
+                        material.dispose();
+                    }
+                });
+            } else if (typeof object.material.dispose === 'function') {
+                object.material.dispose();
+            }
+        }
+    });
+
+    scene.clear();
+
+    // Eliminar el canvas del DOM
+    if (renderer.domElement && renderer.domElement.parentNode) {
+        renderer.domElement.parentNode.removeChild(renderer.domElement);
+    }
+
+    // Limpiar otros recursos (como event listeners)
+    window.removeEventListener('resize', handleResize);
+    // Si hay otros event listeners, también deberían eliminarse aquí
+
+    // Otras limpiezas necesarias, por ejemplo, resetear las configuraciones de la cámara
+    // Por ejemplo: camera.position.set(0, 0, 0), camera.rotation.set(0, 0, 0), etc.
+};
+
+
+export { setup3DEnvironment, handleResize, welcomeAnimation, clickViewWork, stopThreeEnvironment };
