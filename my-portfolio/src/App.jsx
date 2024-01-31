@@ -1,67 +1,14 @@
-import { useState, useEffect } from "react";
-import gsap from "gsap";
-import { viewWorkCameraMove, handleResize } from "./main-three.js";
+import { useEffect } from "react";
+import { setup3DEnvironment, handleResize, clickViewWork, welcomeAnimation } from "./main-three.js";
 import "./App.css";
 
 function App() {
-    const welcomeAnimation = () => {
-      const duration = 1.5;
-      const easing = "power4.out";
-      let delay = 0.5;
-      const opacity = 1;
-      const y = 0;
-      
-        gsap.to("#alex-basurto", {
-            duration: duration,
-            delay: delay,
-            opacity: opacity,
-            y: y,
-            ease: easing,
-        });
-
-        gsap.to("#full-stack", {
-            duration: duration,
-            delay: delay + 0.8,
-            opacity: opacity,
-            y: y,
-            ease: easing,
-        });
-
-        gsap.to("#web-developer", {
-            duration: duration,
-            delay: delay + 1.6,
-            opacity: opacity,
-            y: y,
-            ease: easing,
-        });
-
-        gsap.to("#view-work", {
-            duration: duration,
-            delay: delay + 2.4,
-            opacity: opacity,
-            y: y,
-            ease: easing,
-        });
-    };
-
-    const clickViewWork = (e) => {
-      // todo
-      e.preventDefault();
-      gsap.to(".miniapp", {
-        opacity: 0,
-        duration: 1,
-        ease: "power4.out",
-      });
-      viewWorkCameraMove();
-
-    };
 
     useEffect(() => {
+        setup3DEnvironment();
         welcomeAnimation();
     }, []);
 
-
-  
     useEffect(() => {
       // Agregar el event listener cuando el componente se monta
       window.addEventListener('resize', handleResize);

@@ -3,6 +3,7 @@ import { OrbitControls } from "three/examples/jsm/controls/OrbitControls.js";
 import * as dat from "dat.gui";
 import gsap from "gsap";
 
+// GUI
 const gui = new dat.GUI();
 const world = {
     plane: {
@@ -13,21 +14,94 @@ const world = {
     },
 };
 
-gui.add(world.plane, "width", 1, 500).onChange(generatePlane);
+// Scene
+const scene = new THREE.Scene();
 
-gui.add(world.plane, "height", 1, 500).onChange(generatePlane);
+// Camera
+const camera = new THREE.PerspectiveCamera(
+    75,
+    window.innerWidth / window.innerHeight,
+    0.1,
+    1000
+);
 
-gui.add(world.plane, "widthSegments", 1, 100).onChange(generatePlane);
+// Renderer
+const renderer = new THREE.WebGLRenderer();
 
-gui.add(world.plane, "heightSegments", 1, 100).onChange(generatePlane);
+renderer.setSize(window.innerWidth, window.innerHeight);
+renderer.setPixelRatio(window.devicePixelRatio);
 
-const blueColor = {
-    r: 0.059,
-    g: 0.059,
-    b: 0.196,
+document.body.appendChild(renderer.domElement);
+
+new OrbitControls(camera, renderer.domElement);
+camera.position.z = 50;
+
+const planeGeometry = new THREE.PlaneGeometry(
+    world.plane.width,
+    world.plane.height,
+    world.plane.widthSegments,
+    world.plane.heightSegments
+);
+const planeMaterial = new THREE.MeshPhongMaterial({
+    side: THREE.DoubleSide,
+    flatShading: true,
+    wireframe: false,
+    vertexColors: true,
+});
+const planeMesh = new THREE.Mesh(planeGeometry, planeMaterial);
+scene.add(planeMesh);
+
+// blue colors
+const blueColor = {r: 0.059, g: 0.059, b: 0.196,};
+
+// Frame counter
+let frame = 0;
+
+// Lights
+const light = new THREE.DirectionalLight(0xffffff, 1);
+light.position.set(0, 1, 1);
+scene.add(light);
+
+const backLight = new THREE.DirectionalLight(0xffffff, 1);
+backLight.position.set(0, 0, -1);
+scene.add(backLight);
+
+// Stars
+const starGeometry = new THREE.BufferGeometry();
+const starMaterial = new THREE.PointsMaterial({
+    color: 0xffffff,
+});
+
+const starVertices = [];
+for (let i = 0; i < 10000; i++) {
+    const x = (Math.random() - 0.5) * 2000;
+    const y = (Math.random() - 0.5) * 2000;
+    const z = (Math.random() - 0.5) * 2000;
+    starVertices.push(x, y, z);
+}
+
+starGeometry.setAttribute(
+    "position",
+    new THREE.Float32BufferAttribute(starVertices, 3)
+);
+
+const stars = new THREE.Points(starGeometry, starMaterial);
+scene.add(stars);
+
+// Raycaster para detectar el mouse y cambiar el color de los triangulos
+const raycaster = new THREE.Raycaster();
+
+const mouse = {
+    x: undefined,
+    y: undefined,
 };
 
-function generatePlane() {
+addEventListener("mousemove", (event) => {
+    mouse.x = (event.clientX / innerWidth) * 2 - 1;
+    mouse.y = -(event.clientY / innerHeight) * 2 + 1;
+});
+
+const generatePlane = () => {
     planeMesh.geometry.dispose();
     planeMesh.geometry = new THREE.PlaneGeometry(
         world.plane.width,
@@ -70,85 +144,12 @@ function generatePlane() {
     );
 }
 
-const raycaster = new THREE.Raycaster();
+gui.add(world.plane, "width", 1, 500).onChange(generatePlane);
+gui.add(world.plane, "height", 1, 500).onChange(generatePlane);
+gui.add(world.plane, "widthSegments", 1, 100).onChange(generatePlane);
+gui.add(world.plane, "heightSegments", 1, 100).onChange(generatePlane);
 
-// Scene
-const scene = new THREE.Scene();
-
-// Camera
-const camera = new THREE.PerspectiveCamera(
-    75,
-    window.innerWidth / window.innerHeight,
-    0.1,
-    1000
-);
-
-// Renderer
-const renderer = new THREE.WebGLRenderer();
-
-renderer.setSize(window.innerWidth, window.innerHeight);
-renderer.setPixelRatio(window.devicePixelRatio);
-
-document.body.appendChild(renderer.domElement);
-
-new OrbitControls(camera, renderer.domElement);
-camera.position.z = 50;
-
-const planeGeometry = new THREE.PlaneGeometry(
-    world.plane.width,
-    world.plane.height,
-    world.plane.widthSegments,
-    world.plane.heightSegments
-);
-const planeMaterial = new THREE.MeshPhongMaterial({
-    side: THREE.DoubleSide,
-    flatShading: true,
-    wireframe: false,
-    vertexColors: true,
-});
-const planeMesh = new THREE.Mesh(planeGeometry, planeMaterial);
-scene.add(planeMesh);
-
-generatePlane();
-
-const light = new THREE.DirectionalLight(0xffffff, 1);
-light.position.set(0, 1, 1);
-scene.add(light);
-
-const backLight = new THREE.DirectionalLight(0xffffff, 1);
-backLight.position.set(0, 0, -1);
-scene.add(backLight);
-
-const starGeometry = new THREE.BufferGeometry();
-const starMaterial = new THREE.PointsMaterial({
-    color: 0xffffff,
-});
-
-const starVertices = [];
-for (let i = 0; i < 10000; i++) {
-    const x = (Math.random() - 0.5) * 2000;
-    const y = (Math.random() - 0.5) * 2000;
-    const z = (Math.random() - 0.5) * 2000; //revisar
-
-    starVertices.push(x, y, z);
-}
-
-starGeometry.setAttribute(
-    "position",
-    new THREE.Float32BufferAttribute(starVertices, 3)
-);
-
-const stars = new THREE.Points(starGeometry, starMaterial);
-scene.add(stars);
-
-const mouse = {
-    x: undefined,
-    y: undefined,
-};
-
-let frame = 0;
-
-function animate() {
+const animate = () => {
     requestAnimationFrame(animate);
     renderer.render(scene, camera);
 
@@ -217,13 +218,12 @@ function animate() {
     stars.rotation.y += 0.002;
 }
 
-animate();
+const setup3DEnvironment = () => {
+    generatePlane();
+    animate();
+}
 
-addEventListener("mousemove", (event) => {
-    mouse.x = (event.clientX / innerWidth) * 2 - 1;
-    mouse.y = -(event.clientY / innerHeight) * 2 + 1;
-});
-
+// Fn aparte
 const viewWorkCameraMove = () => {
     gsap.to(camera.position, {
         z: 25,
@@ -242,7 +242,6 @@ const viewWorkCameraMove = () => {
         delay: 1.5,
         onComplete: () => {
             this.$router.push("/work");
-
         },
     });
 };
@@ -253,4 +252,55 @@ const handleResize = () => {
     renderer.setSize(window.innerWidth, window.innerHeight);
 };
 
-export { viewWorkCameraMove, handleResize };
+const welcomeAnimation = () => {
+    const duration = 1.5;
+    const easing = "power4.out";
+    let delay = 0.5;
+    const opacity = 1;
+    const y = 0;
+
+    gsap.to("#alex-basurto", {
+        duration: duration,
+        delay: delay,
+        opacity: opacity,
+        y: y,
+        ease: easing,
+    });
+
+    gsap.to("#full-stack", {
+        duration: duration,
+        delay: delay + 0.8,
+        opacity: opacity,
+        y: y,
+        ease: easing,
+    });
+
+    gsap.to("#web-developer", {
+        duration: duration,
+        delay: delay + 1.6,
+        opacity: opacity,
+        y: y,
+        ease: easing,
+    });
+
+    gsap.to("#view-work", {
+        duration: duration,
+        delay: delay + 2.4,
+        opacity: opacity,
+        y: y,
+        ease: easing,
+    });
+};
+
+const clickViewWork = (e) => {
+    // todo
+    e.preventDefault();
+    gsap.to(".miniapp", {
+        opacity: 0,
+        duration: 1,
+        ease: "power4.out",
+    });
+    viewWorkCameraMove();
+};
+
+export { setup3DEnvironment, handleResize, welcomeAnimation, clickViewWork };
