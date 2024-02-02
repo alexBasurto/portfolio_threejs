@@ -41,6 +41,9 @@ const Work = () => {
                     b.querySelector(
                         ".portfolio-minibox"
                     ).style.backgroundColor = "transparent";
+                    b.querySelectorAll("a").forEach((l) => {
+                        l.classList.add("non-clickable");
+                    });
                 }
             });
         }
@@ -63,15 +66,16 @@ const Work = () => {
                     </div>
                     <div className="portfolio-minibox">
                         <div className="portfolio-title">
-                            <h3>Introducing myself</h3>
+                            <h3>About Me</h3>
                         </div>
                         <div className="portfolio-txt">
                             <p>
-                                I am a Full Stack Web Developer with experience
-                                in JavaScript, React, Node.js, Express.js,
-                                MongoDB, and more. I am a self-taught developer,
-                                and I am always learning new technologies and
-                                improving my skills.
+                                As a recent graduate specializing in full stack
+                                web development, I am eager to embark on my
+                                first professional journey in the IT field. My
+                                passion lies in technology, nature, and sports,
+                                driving me towards continuous learning and
+                                growth.
                             </p>
                         </div>
                     </div>
@@ -87,14 +91,18 @@ const Work = () => {
                     </div>
                     <div className="portfolio-minibox">
                         <div className="portfolio-title">
-                            <h3>My career</h3>
+                            <h3>My Career</h3>
                         </div>
                         <div className="portfolio-txt">
                             <p>
-                                I have a Bachelors Degree in Computer Science. I
-                                have worked as a Software Developer for 2 years,
-                                and I have been working as a Full Stack Web
-                                Developer for 1 year.
+                                My diverse experience spans roles as a systems
+                                and network technician, culminating in a
+                                position as an IT manager within a corporate
+                                group. In this role, I focused on ERP
+                                management, e-commerce, and digital
+                                transformation. Currently, I am shifting my
+                                focus to web development, an area that deeply
+                                motivates me.
                             </p>
                         </div>
                     </div>
@@ -110,13 +118,25 @@ const Work = () => {
                     </div>
                     <div className="portfolio-minibox">
                         <div className="portfolio-title">
-                            <h3>My skills</h3>
+                            <h3>My Skills</h3>
                         </div>
                         <div className="portfolio-txt">
                             <p>
-                                I have experience in JavaScript, React, Node.js,
-                                Express.js, MongoDB, HTML, CSS, Git, GitHub, and
-                                more.
+                                <strong>Tech Skills</strong>
+                            </p>
+                            <p>
+                                React, NodeJS, ExpressJS, JavaScript, HTML, CSS,
+                                Docker, Git MySQL, PostgreSQL, MongoDB, MS SQL
+                                Server Python, Django, VisualBasic Linux and
+                                Bash.
+                            </p>
+                            <p>
+                                <strong>Soft Skills</strong>
+                            </p>
+                            <p>
+                                These include a strong work methodology,
+                                pragmatism, effective communication, and
+                                leadership.
                             </p>
                         </div>
                     </div>
@@ -139,7 +159,7 @@ const Work = () => {
                         </div>
                         <div className="portfolio-txt">
                             <p>
-                                Contact me at{" "}
+                                Contact with me on{" "}
                                 <a
                                     href="https://www.linkedin.com/in/alex-basurto/"
                                     className=" non-clickable"
@@ -150,7 +170,7 @@ const Work = () => {
                                 </a>
                             </p>
                             <p>
-                                Check my work at{" "}
+                                Explore my projects on{" "}
                                 <a
                                     href="https://github.com/alexBasurto/"
                                     className=" non-clickable"

@@ -95,7 +95,7 @@ main {
 .portfolio-box h3 {
   font-size: 1.2rem;
   font-weight: 700;
-  margin: 60px auto 20px auto;
+  margin: 60px auto 10px auto;
   padding: 0;
   text-shadow:
         2px 2px 2px rgba(255, 255, 255, 0.8),
@@ -145,13 +145,18 @@ main {
 }
 
 .portfolio-title {
-  height: 15%;
+  height: 10%;
   color: black;
 }
 
+#box-4 portfolio-txt {
+  margin-top: 15px;
+  
+}
 .portfolio-txt {
   height: 100%;
   opacity: 0;
+  font-size: 14px;
 }
 
 /* Animación work */
@@ -179,5 +184,9 @@ main {
 
   main {
     height: auto;
+  }
+
+  .portfolio-txt {
+    font-size: 10px;
   }
 }
