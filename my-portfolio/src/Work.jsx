@@ -1,4 +1,10 @@
+import { useEffect } from "react";
+import { workWelcomeAnimation } from "./Work-three";
+
 const Work = () => {
+    useEffect(() => {
+        workWelcomeAnimation();
+    }, []);
 
     const showText = (e) => {
         const allBoxes = document.querySelectorAll(".portfolio-box");
