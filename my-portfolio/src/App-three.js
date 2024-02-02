@@ -1,10 +1,10 @@
 import * as THREE from "three";
 import { OrbitControls } from "three/examples/jsm/controls/OrbitControls.js";
-import * as dat from "dat.gui";
+// import * as dat from "dat.gui";
 import gsap from "gsap";
 
 // GUI
-const gui = new dat.GUI();
+// const gui = new dat.GUI();
 const world = {
     plane: {
         width: 400,
@@ -144,10 +144,10 @@ const generatePlane = () => {
     );
 };
 
-gui.add(world.plane, "width", 1, 500).onChange(generatePlane);
-gui.add(world.plane, "height", 1, 500).onChange(generatePlane);
-gui.add(world.plane, "widthSegments", 1, 100).onChange(generatePlane);
-gui.add(world.plane, "heightSegments", 1, 100).onChange(generatePlane);
+// gui.add(world.plane, "width", 1, 500).onChange(generatePlane);
+// gui.add(world.plane, "height", 1, 500).onChange(generatePlane);
+// gui.add(world.plane, "widthSegments", 1, 100).onChange(generatePlane);
+// gui.add(world.plane, "heightSegments", 1, 100).onChange(generatePlane);
 
 let animationFrameId;
 

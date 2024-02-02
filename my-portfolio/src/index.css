@@ -157,7 +157,11 @@ main {
 /* Animación work */
 #box-1, #box-2, #box-3, #box-4 {
   opacity: 0;
-  transform: translate(200px, -200px)
+  transform: translate(200px, -80px)
+}
+
+.non-clickable {
+  pointer-events: none;
 }
 
 @media (max-width: 768px) {

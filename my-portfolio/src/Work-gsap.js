@@ -1,11 +1,10 @@
-import * as THREE from "three";
 import gsap from "gsap";
 
 // Fn aparte
 
 const workWelcomeAnimation = () => {
     const duration = 1.5;
-    const easing = "power4.out";
+    const easing = "expo.out";
     let delay = 0.5;
     const opacity = 1;
     const y = 0;
