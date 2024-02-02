@@ -36,6 +36,7 @@ canvas {
 #alex-basurto, #full-stack, #web-developer, #view-work {
   transform: translateY(30px);
 }
+
 main {
   width: 100%;
   display: flex;
@@ -44,14 +45,33 @@ main {
   justify-content: space-between;
 }
 
+header {
+  width: 100%;
+  height: 100px;
+  margin: 12px auto;
+  padding: 0 10%;
+}
+
+header > h1, header > h2 {
+  text-align: left;
+}
+
+header > h2 {
+  font-weight: 700;
+  margin: 0;
+  padding: 0;
+  color: white;
+}
+
 .portfolio-box {
   display: inline-block;
   position: relative;
   overflow: hidden;
   width: 24%;
+  height: 500px;
   background-color: #282828; /* Color de fondo */
-
-  border-radius: 92% 8% 94% 6% / 16% 83% 17% 84%;
+  clip-path: polygon(0 10%, 100% 0, 100% 90%, 0 100%);
+  
 }
 
 .portfolio-box:hover {
@@ -63,6 +83,11 @@ main {
   font-weight: 700;
   margin: 60px auto 20px auto;
   padding: 0;
+  text-shadow:
+        2px 2px 2px rgba(255, 255, 255, 0.8),
+        -1px -1px 2px rgba(255, 255, 255, 0.8),
+        1px -1px 2px rgba(255, 255, 255, 0.8),
+        -1px 1px 2px rgba(255, 255, 255, 0.8);
 }
 
 .portfolio-box a {
@@ -93,7 +118,17 @@ main {
   z-index: 1;
   height: 100%;
   color: white;
+}
+
+.portfolio-title {
+  height: 15%;
+  color: black;
+}
+
+.portfolio-txt {
   background-color: rgba(57, 57, 57, 0.8);
+  height: 100%;
+  opacity: 0;
 }
 
 @media (max-width: 768px) {
