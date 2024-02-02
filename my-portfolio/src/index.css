@@ -104,6 +104,16 @@ main {
 
 .portfolio-box a {
   color: yellow;
+  font-weight: 700;
+}
+
+#box-4 p, #box-4 a {
+  display: block;
+  width: 100%;
+}
+
+.portfolio-box a:hover {
+  text-shadow: white 0px 0px 10px;
 }
 
 .portfolio-img {
@@ -149,5 +159,13 @@ main {
 
   .portfolio-box {
     width: 100%;
+  }
+
+  body, html {
+    overflow: auto;
+  }
+
+  main {
+    height: auto;
   }
 }

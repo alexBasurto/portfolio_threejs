@@ -103,17 +103,17 @@ const Work = () => {
                     </div>
                     <div className="portfolio-minibox">
                         <div className="portfolio-title">
-                            <h3>Contact and my projects</h3>
+                            <h3>Contact and projects</h3>
                         </div>
                         <div className="portfolio-txt">
                             <p>
-                                You can contact me at{" "}
+                                Contact me at{" "}
                                 <a href="https://www.linkedin.com/in/alex-basurto/">
                                     LinkedIn
                                 </a>
                             </p>
                             <p>
-                                You can check my work at{" "}
+                                Check my work at{" "}
                                 <a href="https://github.com/alexBasurto/">
                                     GitHub
                                 </a>
