@@ -12,6 +12,19 @@ body, html {
   background-color: black;
 }
 
+.work {
+  width: 100%;
+  height: 100dvh;
+}
+
+footer {
+  height: 40px;
+  padding: 8px 0;
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+}
+
 canvas {
   display: block; /* Esto puede ayudar a eliminar cualquier espacio extra */
 }

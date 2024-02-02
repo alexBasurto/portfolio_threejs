@@ -91,7 +91,9 @@ const Work = () => {
                     </div>
                 </article>
             </main>
-            <footer></footer>
+            <footer>
+                <p>Made with React and ThreeJS</p>
+            </footer>
         </div>
     );
 };
