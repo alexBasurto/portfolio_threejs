@@ -17,11 +17,26 @@ body, html {
   height: 100dvh;
 }
 
+header {
+  width: 100%;
+  height: 100px;
+  padding: 10px 10%;
+}
+
+header > h1, header > h2 {
+  text-align: left;
+}
+
+header > h2 {
+  font-weight: 700;
+  margin: 0;
+  padding: 0;
+  color: white;
+}
+
 footer {
   height: 40px;
   padding: 8px 0;
-  position: absolute;
-  bottom: 0;
   width: 100%;
 }
 
@@ -52,28 +67,12 @@ canvas {
 
 main {
   width: 100%;
+  height: calc(100% - 140px);
   display: flex;
   flex-direction: row;
+  flex-wrap: wrap;
   padding: 0 10%;
   justify-content: space-between;
-}
-
-header {
-  width: 100%;
-  height: 100px;
-  margin: 12px auto;
-  padding: 0 10%;
-}
-
-header > h1, header > h2 {
-  text-align: left;
-}
-
-header > h2 {
-  font-weight: 700;
-  margin: 0;
-  padding: 0;
-  color: white;
 }
 
 .portfolio-box {
@@ -139,7 +138,6 @@ header > h2 {
 }
 
 .portfolio-txt {
-  background-color: rgba(57, 57, 57, 0.8);
   height: 100%;
   opacity: 0;
 }
@@ -147,5 +145,9 @@ header > h2 {
 @media (max-width: 768px) {
   .fs-web-dev {
     font-size: 1.6rem;
+  }
+
+  .portfolio-box {
+    width: 100%;
   }
 }

@@ -1,4 +1,35 @@
 const Work = () => {
+
+    const showText = (e) => {
+        const allBoxes = document.querySelectorAll(".portfolio-box");
+        const box = e.currentTarget;
+        const minibox = box.querySelector(".portfolio-minibox");
+        const txt = box.querySelector(".portfolio-txt");
+        const title = box.querySelector(".portfolio-title h3");
+    
+        if (window.getComputedStyle(txt).opacity === "1") {
+            txt.style.opacity = "0";
+            title.style.color = "black";
+            title.style.textShadow = '2px 2px 2px rgba(255, 255, 255, 0.8), -1px -1px 2px rgba(255, 255, 255, 0.8), 1px -1px 2px rgba(255, 255, 255, 0.8), -1px 1px 2px rgba(255, 255, 255, 0.8)';
+            minibox.style.backgroundColor = "transparent";
+        } else {
+            txt.style.opacity = "1";
+            title.style.color = "white";
+            title.style.textShadow = "none";
+            minibox.style.backgroundColor = "rgba(57, 57, 57, 0.8)";
+            allBoxes.forEach((b) => {
+                if (b !== box) {
+                    b.querySelector(".portfolio-txt").style.opacity = "0";
+                    b.querySelector(".portfolio-title h3").style.color = "black";
+                    b.querySelector(".portfolio-title h3").style.textShadow = '2px 2px 2px rgba(255, 255, 255, 0.8), -1px -1px 2px rgba(255, 255, 255, 0.8), 1px -1px 2px rgba(255, 255, 255, 0.8), -1px 1px 2px rgba(255, 255, 255, 0.8)';
+                    b.querySelector(".portfolio-minibox").style.backgroundColor = "transparent";
+                    
+                }
+            });
+        }
+    };
+    
+
     return (
         <div className="work text-white text-center w-full px-6">
             <header>
@@ -6,7 +37,7 @@ const Work = () => {
                 <h2>Full Stack Web Developer</h2>
             </header>
             <main>
-                <article className="portfolio-box">
+                <article className="portfolio-box" id="box-1" onClick={showText}>
                     <div className="portfolio-img">
                         <img src="/me2.jpg" alt="Alex Basurto" />
                     </div>
@@ -26,7 +57,7 @@ const Work = () => {
                     </div>
                 </article>
 
-                <article className="portfolio-box">
+                <article className="portfolio-box" id="box-2" onClick={showText}>
                     <div className="portfolio-img">
                         <img src="/stairs.jpg" alt="Escaleras" />
                     </div>
@@ -45,7 +76,7 @@ const Work = () => {
                     </div>
                 </article>
 
-                <article className="portfolio-box">
+                <article className="portfolio-box"  id="box-3" onClick={showText}>
                     <div className="portfolio-img">
                         <img src="/skills.jpg" alt="Ordenador portátil" />
                     </div>
@@ -63,7 +94,7 @@ const Work = () => {
                     </div>
                 </article>
 
-                <article className="portfolio-box">
+                <article className="portfolio-box"  id="box-4" onClick={showText}>
                     <div className="portfolio-img">
                         <img
                             src="/github-linkedin.png"
