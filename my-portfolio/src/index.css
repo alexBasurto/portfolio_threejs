@@ -82,7 +82,7 @@ main {
   position: relative;
   overflow: hidden;
   width: 24%;
-  height: 500px;
+  height: 600px;
   background-color: #282828; /* Color de fondo */
   clip-path: polygon(0 10%, 100% 0, 100% 90%, 0 100%);
   
@@ -151,8 +151,23 @@ main {
 
 #box-4 portfolio-txt {
   margin-top: 15px;
-  
 }
+
+#box-4 p {
+  padding-top: 20px;
+  font-size: 20px;
+}
+
+#box-3 span {
+  display: block;
+  width: 100%;
+  color: greenyellow;
+}
+
+#soft-skills {
+  padding-top: 15px;
+}
+
 .portfolio-txt {
   height: 100%;
   opacity: 0;
@@ -187,6 +202,6 @@ main {
   }
 
   .portfolio-txt {
-    font-size: 10px;
+    font-size: 12px;
   }
 }

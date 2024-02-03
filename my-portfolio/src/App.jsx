@@ -43,7 +43,7 @@ function App() {
                     onClick={handleViewWork}
                     className="text-2xl mt-4 border px-4 py-2 rounded-lg hover:bg-white hover:text-gray-800 inline-block opacity-0"
                 >
-                    View Work
+                    View Portfolio
                 </button>
             </div>
         </>

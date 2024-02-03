@@ -70,12 +70,13 @@ const Work = () => {
                         </div>
                         <div className="portfolio-txt">
                             <p>
-                                As a recent graduate specializing in full stack
-                                web development, I am eager to embark on my
-                                first professional journey in the IT field. My
-                                passion lies in technology, nature, and sports,
-                                driving me towards continuous learning and
-                                growth.
+                                With several years of experience in the IT field
+                                and a recent specialisation in full stack web
+                                development, I am ready to take my career to new
+                                heights. My journey in technology, complemented
+                                by my enthusiasm for nature and sport,
+                                underlines my commitment to continuous learning
+                                and professional and personal development.
                             </p>
                         </div>
                     </div>
@@ -125,18 +126,22 @@ const Work = () => {
                                 <strong>Tech Skills</strong>
                             </p>
                             <p>
-                                React, NodeJS, ExpressJS, JavaScript, HTML, CSS,
-                                Docker, Git MySQL, PostgreSQL, MongoDB, MS SQL
-                                Server Python, Django, VisualBasic Linux and
-                                Bash.
+                                <span>WEB DEV:</span>
+                                React, NodeJS, ExpressJS, JavaScript, HTML, CSS, Docker, Git
+                                <span>DATABASES:</span>
+                                MySQL, PostgreSQL, MongoDB, MS SQL Server
+                                <span>OTHERS:</span>
+                                Python, VisualBasic
+                                Enthusiast of Linux and Bash
                             </p>
-                            <p>
+                            <p id="soft-skills">
                                 <strong>Soft Skills</strong>
                             </p>
                             <p>
-                                These include a strong work methodology,
-                                pragmatism, effective communication, and
-                                leadership.
+                                I bring a suite of soft skills crucial in
+                                today{"'"}s professional environment, including a
+                                strong work methodology, pragmatism, effective
+                                communication, and leadership.
                             </p>
                         </div>
                     </div>
