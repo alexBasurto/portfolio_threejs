@@ -188,7 +188,7 @@ const Work = () => {
                                 </a>
                             </p>
                             <p>
-                                Explore my projects on{" "}
+                                Explore my work on{" "}
                                 <a
                                     href="https://github.com/alexBasurto/"
                                     className=" non-clickable"
@@ -197,6 +197,9 @@ const Work = () => {
                                 >
                                     GitHub
                                 </a>
+                            </p>
+                            <p>
+                                Or browse my <a href="https://github.com/alexBasurto/alexBasurto/blob/main/PROJECTS.md" alt="Acceso directo a mis proyectos.">projects</a> directly
                             </p>
                         </div>
                     </div>
