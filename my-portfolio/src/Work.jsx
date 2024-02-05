@@ -73,7 +73,10 @@ const Work = () => {
                                 With several years of experience in the IT field
                                 and a recent specialisation in full stack web
                                 development, I am ready to take my career to new
-                                heights. My journey in technology, complemented
+                                heights.
+                            </p>
+                            <p>
+                                My journey in technology, complemented
                                 by my enthusiasm for nature and sport,
                                 underlines my commitment to continuous learning
                                 and professional and personal development.
@@ -99,9 +102,15 @@ const Work = () => {
                                 My diverse experience spans roles as a systems
                                 and network technician, culminating in a
                                 position as an IT manager within a corporate
-                                group. In this role, I focused on ERP
+                                group.
+                            </p>
+                            <p>
+                                In this role, I focused on ERP
                                 management, e-commerce, and digital
-                                transformation. Currently, I am shifting my
+                                transformation.
+                            </p>
+                            <p>
+                                Currently, I am shifting my
                                 focus to web development, an area that deeply
                                 motivates me.
                             </p>
@@ -131,8 +140,12 @@ const Work = () => {
                                 <span>DATABASES:</span>
                                 MySQL, PostgreSQL, MongoDB, MS SQL Server
                                 <span>OTHERS:</span>
-                                Python, VisualBasic
-                                Enthusiast of Linux and Bash
+                                <p>
+                                    Python, VisualBasic
+                                </p>
+                                <p>
+                                    Enthusiast of Linux and Bash
+                                </p>
                             </p>
                             <p id="soft-skills">
                                 <strong>Soft Skills</strong>
