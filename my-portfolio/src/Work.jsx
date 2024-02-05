@@ -50,9 +50,9 @@ const Work = () => {
     };
 
     return (
-        <div className="work text-white text-center w-full px-6">
+        <div className="work">
             <header>
-                <h1 className="text-3xl">Alex Basurto</h1>
+                <h1>Alex Basurto</h1>
                 <h2>Full Stack Web Developer</h2>
             </header>
             <main>
