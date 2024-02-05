@@ -28,20 +28,20 @@ function App() {
 
     return (
         <>
-            <div className="miniapp absolute text-white text-center w-full max-w-2xl px-6">
-                <h1 id="alex-basurto" className="text-3xl opacity-0">
+            <div className="miniapp absolute">
+                <h1 id="alex-basurto" className="opacity-zero">
                     Alex Basurto
                 </h1>
-                <p id="full-stack" className="fs-web-dev text-3xl opacity-0">
+                <p id="full-stack" className="fs-web-dev opacity-zero">
                     Full Stack
                 </p>
-                <p id="web-developer" className="fs-web-dev text-3xl opacity-0">
+                <p id="web-developer" className="fs-web-dev opacity-zero">
                     Web Developer
                 </p>
                 <button
                     id="view-work"
                     onClick={handleViewWork}
-                    className="text-2xl mt-4 border px-4 py-2 rounded-lg hover:bg-white hover:text-gray-800 inline-block opacity-0"
+                    className="opacity-zero"
                 >
                     View Portfolio
                 </button>
