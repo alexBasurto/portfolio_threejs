@@ -199,7 +199,11 @@ const Work = () => {
                                 </a>
                             </p>
                             <p>
-                                Or browse my <a href="https://github.com/alexBasurto/alexBasurto/blob/main/PROJECTS.md" alt="Acceso directo a mis proyectos.">projects</a> directly
+                                Or browse my <a href="https://github.com/alexBasurto/alexBasurto/blob/main/PROJECTS.md"
+                                className=" non-clickable"
+                                target="_blank"
+                                rel="noreferrer"
+                                >projects</a> directly
                             </p>
                         </div>
                     </div>
