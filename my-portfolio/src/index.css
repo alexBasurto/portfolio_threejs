@@ -144,6 +144,7 @@ main {
 .portfolio-box h3 {
   font-size: 1.2rem;
   font-weight: 700;
+  line-height: 1.5rem;
   margin: 60px auto 10px auto;
   padding: 0;
   text-shadow:
@@ -198,6 +199,10 @@ main {
   color: black;
 }
 
+portfolio-txt {
+  margin: 0;
+}
+
 #box-4 portfolio-txt {
   margin-top: 15px;
 }
@@ -221,6 +226,12 @@ main {
   height: 100%;
   opacity: 0;
   font-size: 14px;
+  line-height: 1.3rem;
+}
+
+.portfolio-txt p {
+  margin: 0;
+  padding: 0;
 }
 
 /* Animación work */
@@ -233,17 +244,17 @@ main {
   pointer-events: none;
 }
 
-@media (max-width: 768px) {
-  .fs-web-dev {
-    font-size: 1.6rem;
+@media (max-width: 769px) {
+  #alex-basurto, #full-stack, #web-developer, #view-work {
+    font-size: 1.5rem;
   }
+  
+    body, html {
+      overflow: auto;
+    }
 
   .portfolio-box {
-    width: 100%;
-  }
-
-  body, html {
-    overflow: auto;
+    width: 45%;
   }
 
   main {
@@ -252,5 +263,19 @@ main {
 
   .portfolio-txt {
     font-size: 12px;
+  }
+
+  header h1 {
+    font-size: 1.5rem;
+    line-height: 1.8rem;
+  }
+  header h2 {
+    font-size: 0.8rem;
+  }
+}
+
+@media (max-width: 732px) {
+  .portfolio-box {
+    width: 100%;
   }
 }
